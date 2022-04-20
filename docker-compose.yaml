@@ -1,0 +1,15 @@
+version: '3'
+services:
+  youtube_microservice:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: youtube_microservice
+    environment:
+      - DEMO_SERVICE_PORT=3101
+    ports:
+      - "3101:3101"
+    volumes:
+      - ./src:/app/src
+    restart: on-failure
+  
