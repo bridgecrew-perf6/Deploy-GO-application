@@ -21,7 +21,7 @@ func main() {
 func bootstrap() {
 	defer restart()
 	database.ConnectDB()
-	err = routes.App.Listen(fmt.Sprintf(":%s", os.Getenv("DEMO_SERVICE_PORT")))
+	err = routes.App.Listen(fmt.Sprintf(":%s", os.Getenv("3101")))
 	if err != nil {
 		panic(err)
 	}
