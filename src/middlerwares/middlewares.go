@@ -7,7 +7,7 @@ import (
 )
 
 func Auth(c *fiber.Ctx) error {
-	if len(c.Request().Header.Peek("security_key")) > 0 {
+	if len(c.Request().Header.Peek("X-API-KEY")) > 0 {
 		return c.Next()
 	}
 	return c.SendStatus(fiber.StatusUnauthorized)

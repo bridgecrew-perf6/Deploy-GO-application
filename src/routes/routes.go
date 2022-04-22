@@ -27,6 +27,7 @@ func init() {
 	App.Use(cors.New(cors.Config{
 		AllowOrigins: "*",
 		AllowMethods: "GET,POST,PATCH",
+		AllowHeaders: "Origin, Content-Type, Accept, X-API-KEY",
 	}))
 	App.Use(etag.New())
 	App.Use(requestid.New())
@@ -41,4 +42,5 @@ func init() {
 	Moderator_routes()
 	batch_routes()
 	examcategory_routes()
+	youtube_routes()
 }
