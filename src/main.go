@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"time"
 
 	"backend/routes"
@@ -21,7 +20,7 @@ func main() {
 func bootstrap() {
 	defer restart()
 	database.ConnectDB()
-	err = routes.App.Listen(fmt.Sprintf(":%s", os.Getenv("3101")))
+	err = routes.App.Listen(fmt.Sprintf(":%s", "3101"))
 	if err != nil {
 		panic(err)
 	}
