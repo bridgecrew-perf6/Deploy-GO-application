@@ -41,11 +41,11 @@ type ClassData struct {
 	Thumbnail         string             `json:"Thumbnail"`
 	Category          string             `json:"Category"`
 	Type              string             `json:"Type"`
-	FacultyId         int                `json:"FacultyId"`
+	FacultyId         string             `json:"FacultyId"`
 	Time              string             `json:"Time"`
 	Duration          string             `json:"Duration"`
 	Studio            string             `json:"Studio"`
-	EditorId          int                `json:"EditorId"`
+	EditorId          string             `json:"EditorId"`
 	Class_Status      string             `json:"Class_Status"`
 	YT_Privacy_Status string             `json:"YT_Privacy_Status"`
 	YT_Channel_Name   string             `json:"YT_Channel_Name"`
