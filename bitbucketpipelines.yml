@@ -1,0 +1,27 @@
+image: golang:alpine3.15
+pipelines:
+  default:
+    - step:
+        name: Build and package
+        services:
+          - docker
+        script:
+          - apk --no-cache add zip
+          - go version
+          - go get
+          - go build main.go
+          - ls -l
+          - zip code.zip -r * .[^.]*
+        artifacts:
+          - code.zip
+    - step:
+        name: Update Lambda code
+        script:
+          - pipe: atlassian/aws-lambda-deploy:0.2.1
+            variables:
+              AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+              AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+              AWS_DEFAULT_REGION: 'ap-south-1'
+              FUNCTION_NAME: ${DEV}
+              COMMAND: 'update'
+              ZIP_FILE: 'code.zip'
